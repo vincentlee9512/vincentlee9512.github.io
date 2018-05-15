@@ -1,0 +1,16 @@
+html{
+  margin: 2rem;
+}
+
+#content{
+  padding: 4rem;
+}
+
+h6{
+  text-decoration: underline;
+}
+
+.dark_red{
+  color: #800020;
+}
+
