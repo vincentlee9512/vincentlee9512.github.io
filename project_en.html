@@ -36,30 +36,148 @@
         <h4 class='dark_red'>Projects</h4>
         <br/>
 
+        <h6>May 22, 2019</h6>
+        <h6>Minnesota Geological Survey project</h6>
+        <p>
+            In this project, all students in 2019-spring Capstone class helped the Minnesota Geological Survey organization
+            to maintain, update and develop a series of software for collecting geological information for study. The whole
+            class was divided into 5 teams; they were Guarantee team(VB), database team, DevOps team, modernization team(C#),
+            and Mobile team.
+        </p>
+
+        <p>
+            In the first half of the development period, I was assigned to the Guarantee team for maintaining the desktop
+            software which was used in the daily operation in the MGS organization. I was responsible for rewriting the Visual
+            Basic code in our styleguide, in-line documentation, and debugging. This desktop software was created by MGS
+            technology stuff(s) back in 2004, constructed by Visual Basic and ArcGIS from Esri. My main task was to rewrite
+            the vb code and put comments for uncommented code; this task help the entire development team gain more information
+            for the software. I also located and correct a bug in the software, where the entry form calculated the percentage of
+            the geological material incorrectly. This bug was in a form called "long form", where geologists enter information for
+            geological materials and the program would calculate the percentage by default; the percentage was not always added to
+            100%. After I discussed with other colleagues in the Guarantee team, I corrected the algorithm for the calculation.
+        </p>
+
+        <p>
+            In the second half of the period, because the tasks in the Guarantee team reduced, I was reassigned to the Mobile
+            team for developing the new IOS application for MGS. The new application was designed for the geologist to use
+            ios devices to write records in field; they are able to record information in field and upload the records when
+            they have network connection. In the Mobile team, I was mainly in charge of tasks management, writing report and
+            documentation, providing assistance for core function development and working on non-core function development.
+            Because the whole team were using Github for code sharing and version control, I suggested and used the Issues and
+            Projects features from Github to manage and assign the tasks of the development. For submitting code, I push
+            the rule for using pull requests in Github, because it is easier for everyone to review the code from others
+            before others add the changes to the sharing branchs. For the version control and work flow, I used Git Flow
+            to improve our repository environment. In details, everyone has his own branch for develop on a specific
+            feature of the application; after finishing the development, the developer should submit a pull require for
+            submitting code from his own feature branch to the main developing branch. After each sprints(every two weeks),
+            we submit code from the main developing branch to the release branch.
+        </p>
+
+        <p>
+            At the end of the development, I was mainly in charge of the public documentation below and some parts of
+            the team final report.
+        </p>
+
+        <br/>
+        <p>
+            - <a href="src/QDI_Class_Overview.pdf" target="_blank">Project Overview (PDF)</a> <br/>
+            - <a href="src/QDI_Mobile_Final_Report.pdf" target="_blank">Mobile_team_final_report (PDF)</a> <br/>
+            - <a href="src/QDI_Mobile_Final_Documentation.pdf" target="_blank">Mobile_team_documentation (PDF）</a>
+        </p>
+        <br/>
+
         <h6>Dec 10, 2018</h6>
         <h6>Computer Architecture Project: Cache Simulator</h6>
         <p>
             In this project, I created a CPU cache simulator with James Allender.
             This program was wrote in C.
             The goal of this CPU cache simulator is to simulate how a cache works in a computer system through intercepting the processor's memory requests and handling the retrieving and storing to and from the memory.
-            I was mainly in charge of part of the cache structure design and handlers of read requests.
-            <br/>
+            The size of this cache system would be set to ( words per block * number of sets * associativity ) where these values are provided by the users.
+            The level of associativity ranges from 1 (direct-mapped cache) to the number of blocks in the cache (fully associative cache).
+            The block size is the number of words of memory that are stored in a single cache block.
+            Our write policy is allocate-on-write write-back where we get information from memory if it is not in cache already and we write data back to memory from cache if it is dirty when it is evicted.
+        </p>
+        <p>
+            To handle read requests from the processor, our program will first check if the the block of data for the request is in the cache.
+            If the requested data is not available in the cache, we will fetch the desired data from the memory and put it in the least-recently-use block in the cache.
 
-            -Github: <a href="https://github.com/jamesallender/cisc340_project4" target="_blank ">Project Repository</a>
+        </p>
+        <p>
+            To handle write requests from the processor, the program operates similar to how it handles read requests. The program
+            first finds if the address is in the cache. If it is in the cache, it changes the word of memory in the block corresponding
+            to the address with the new data attempting to be written by the processor. If it is not in the cache, the program will
+            transfer the block of data from the memory to the cache the same as it did for a miss read request, then it writes the new
+            data to the block in the cache but does not immediately write it to memory.
+        </p>
+
+        <p>
+            At the end of the program, when the simulator receives a halt instruction, the cache will loop through the entire cache check for valid dirty cache block.
+            All found valid dirty cache blocks will write updated data to the memory.
+        </p>
+
+        <p>
+            I was mainly in charge of part of the cache structure design and handlers of read requests.
+        </p>
+            <br/>
+        <p>
+            -Github: <a href="https://github.com/vincentlee9512/cisc340_project4_selfcopy" target="_blank ">Project Repository</a>
         </p>
 
         <br/>
 
         <h6>Nov 20, 2018</h6>
-        <h6>Computer Architecture Project: Pipeline Implementation</h6>
+        <h6>Computer Architecture Project: Pipelined Datapath Simulator</h6>
         <p>
-            In this project, I implemented a pipeline design datapath(which was customized for this course) with James Allender.
+            In this project, I implemented a pipelined datapath simulator(which was customized for this course) with James Allender.
             This program was wrote in C.
-            The goal for this pipeline design datapath is to simulate the input machine code with correct behavior.
-            I was mainly in charge of developing the several stages in the datapath and the forwarding unit which is used for handling data hazard.
-            <br/>
+            The goal for this pipelined datapath simulator is to simulate the input machine code with correct behavior;
+            the program prints out the state of machine at each cycle and then the statistics on the run to the screen at the end of execution.
+        </p>
 
-            -Github: <a href="https://github.com/jamesallender/CISC340Project3" target="_blank ">Project Repository</a>
+        <p>
+            The Entire simulator is mainly constructed with the behaviors of each stages and the handler for control and data hazard.
+            In our custom pipelined datapath simulator, it has a 5 stage pipeline used to process instructions.
+            These stages are Fetch, Decode, Execution, Memory, and Write back.
+            Fetch gets instructions from memory, decode interprets an instruction and gets the required values for execution,
+            execution executed the instruction, memory stores or fetches data from/to memory, and write back writes the data back to the register file.
+            We wrote these 5 stages as functions in our program, and each of them will be called in each cycle to process instruction.
+        </p>
+
+        <p>
+            Between each of these 5 stages, and one after the final stage, are what is effectively a set of pipeline registers that acts as pipeline buffers.
+            These buffers are used to hold the output of the previous stage between cycles.
+            At the beginning of a cycle a stage will read in data from the preceding pipeline buffer and then store it's output data in the following pipeline buffer.
+            The buffers used as input are in a structure state that represents the state of the machine during the current cycle execution and does
+            not change during the cycle because the entire cycle theoretically happens at the same time instead of procedurally, and
+            the output of the stages are stored in a structure that represents the following state newstate.
+        </p>
+
+        <p>
+            There would be two types of hazard for this pipelined design: data and control hazard.
+            The basic idea for our solution to handle the data hazard is to check if there are any
+            data hazard that will affect the execution in the current cycle.
+            The hasDataHazard function is mainly detecting the data hazard in specific the pipelined
+            buffer as mentioned above. The forwarding function will call the hasDataHazard function
+            several times to check if there is any data hazard in pipelined buffer after the execution
+            stage. If there is a data hazard, the execution stage will take the the most updated data
+            and use it in the execution process. If there is not, the function will do nothing.
+        </p>
+
+        <p>
+            For control hazard, when we fetch a BEQ (branch on equal) instruction, we assume it will
+            not be taken. If the BEQ instruction makes it to the memory stage and if the result is to take
+            a branch, we will make all the buffer before the memory stage to the NOOP instruction, and move
+            the instruction pointer to the branch target.
+
+        </p>
+
+        <p>
+            I was mainly in charge of developing the Fetch, Decode and Write back stages in the datapath and the forwarding unit and hazard detector which is used for handling data hazard.
+        </p>
+
+        <br/>
+        <p>
+            -Github: <a href="https://github.com/vincentlee9512/cisc340_project3_selfcopy" target="_blank ">Project Repository</a>
         </p>
 
         <br/>
