@@ -39,6 +39,94 @@
 
             <br/>
 
+            <h6>2019年 7月 29日</h6>
+            <h6>人际关系分析：PageRank算法</h6>
+            <p>
+                （个人项目）这个项目通过使用 Python 的第三方库 NetworkX 中的有向图类和 pagerank 函数，
+                对邮件中的寄件人和收件人进行分析，最后用分析的数据绘制数据可视化图表。
+            </p>
+            <p>
+                这个项目分为三个核心部分，分别是数据加载、数据准备、和数据挖掘。
+            </p>
+            <p>
+                第一部分是加载数据。这个项目中，我用来希拉里公开的邮件作为数据(https://www.kaggle.com/kaggle/hillary-clinton-emails)；
+                全部数据都以 csv 格式储存。
+                整个项目中，emails.csv 储存着核心数据；里面的每一封邮件的寄件人和收件人信息是分析这些邮件中的人际关系的基本数据。
+                Persons.csv 和 aliases.csv 储存着相关的人名和别名；在统一寄件人和收件人的人名时需要用到。
+            </p>
+            <p>
+                第二部分是数据准备。这个阶段中，我将上一个阶段中加载的所有数据过滤成需要的形式。
+                在 emails.csv 的数据中，因为邮件本文不在考虑范围内，我只提取了寄件人和收件人的信息，并计算了每个人的邮件来往次数；
+                这个次数将会被用在之后的有向图中，作为权重。而 Persons.csv 和 aliases.csv 将会被用在统一人名的步骤中。
+            </p>
+            <p>
+                第三部分是数据挖掘。这个阶段中，我使用 NetworkX 库中的有向图类和 pagerank 函数对过滤后的数据进行分析。
+                我把计算好的边和权重作为参数，构建了有向图类。然后使用 pagerank 函数计算有向图中所有节点的 pr 值。
+                在绘制图表前，我根据 pr 值大小设置节点的大小，并把过小的节点去掉，提升可读性。
+            </p>
+            <p>
+                Github 链接: <a href="https://github.com/vincentlee9512/personal_relationship_in_email" target="_blank ">Project Repository</a>
+            </p>
+            <br/>
+
+            <h6>2019年 7月 26日</h6>
+            <h6>文档分类：多项式朴素贝叶斯分类器</h6>
+            <p>
+                (个人项目）这个项目通过使用 scikit-learn(sklearn) 库的多项式朴素贝叶斯算法，创建了一个中文文档的分类器。
+            </p>
+
+            <p>
+                在这个项目分为两个核心部分，分别是数据准备和文档分类。
+            </p>
+
+            <p>
+                在数据准备部分，程序会加载事先下载好的训练集和测试集，并且用 jieba 库对这些文档进行分词。
+                然后，程序会加载停用词集并将其转化为数组；
+                接着程序会使用 sklearn 库的 TfidfVectorizer 类计算单词 TF-IDF 向量的值；创建这个对象时，传入停用词集。
+                调用这个对象的 fit_transform 函数对训练集进行拟合，得到训练集的特征空间。
+            </p>
+
+            <p>
+                在文档分类部分，我用了 sklearn 库里的 MultinomialNB 类创建了多项式朴素贝叶斯分类器。
+                然后调用这个分类器的 fit 函数，传入上面的训练集的特征空间和对应的分类（labels）作为参数；
+                这个分类器会自动训练成一个符合特征空间和对应分类的分类器。
+                获得训练好的分类器后，我传入测试集做预测，并计算分类器的准确率。
+            </p>
+
+            <p>
+                Github 链接: <a href="https://github.com/vincentlee9512/docs_classifier" target="_blank ">Project Repository</a>
+            </p>
+
+            <br/>
+
+
+            <h6>2019年 7月 25日</h6>
+            <h6>数据可视化：歌词收集和词云可视化</h6>
+            <p>
+                (个人项目）这是一个数据可视化的练习项目。通过分析数据携带的常用词，做词云展示。项目中的数据来自网易云音乐的API。
+            </p>
+
+            <p>
+                在这个项目分为两个核心部分，分别是数据准备和词云分析。
+            </p>
+
+            <p>
+                在数据准备部分，我首先用 request 库和网易云音乐的歌手 id，抓取了此歌手的前 50 首热门单曲。
+                然后通过 xpath 解析返回数据中的 html 并获得前 50 首热门单曲的名字和id。
+                接着用歌曲 id 和网易歌词的API（'http://music.163.com/api/song/lyric?os=pc&id=' + song_id + '&lv=-1&kv=-1&tv=-1'），
+                抓取歌单中歌曲的歌词。在获取歌词后，我使用了停用词集对歌词进行过滤，并且用 jieba 库对歌词集进行分词。
+            </p>
+
+            <p>
+                在词云分析阶段，我使用了 WordCloud 库解析过滤后的歌词，并生成词云。最后调用 matplotlib 里的 pyplot 展示词云。
+            </p>
+
+            <p>
+                Github 链接: <a href="https://github.com/vincentlee9512/lyrics_cloud" target="_blank ">Project Repository</a>
+            </p>
+
+            <br/>
+
             <h6>2019年 5月 22日：</h6>
             <h6>Minnesota Geological Survey 项目</h6>
             <p>
